@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>文字と数字のエフェクト 深掘り｜8種</title>
+<title>文字と数字のエフェクト 演出編 vol.4｜8種＋バリエーション</title>
 <meta name="robots" content="noindex, nofollow">
 <style>
 :root{--bg:#07172a;--accent:#e8862f;--ink:#ecf3fb;--sub:#9db2c8;--line:rgba(255,255,255,.10)}
@@ -14,11 +14,17 @@ header{text-align:center}
 h1{font-size:clamp(22px,3.4vw,34px);font-weight:800;letter-spacing:.02em}
 h1 small{display:block;font-size:.4em;letter-spacing:.34em;color:var(--accent);margin-top:9px}
 header p{margin-top:12px;color:var(--sub);font-size:13.5px}
-.panel{max-width:760px;margin:24px auto 40px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.panel input{flex:1;min-width:230px;padding:11px 15px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--ink);font-size:15px;outline:none}
-.panel input:focus{border-color:rgba(232,134,47,.7)}
+.panel{max-width:820px;margin:24px auto 18px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.panel input[type=text]{flex:1;min-width:220px;padding:11px 15px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--ink);font-size:15px;outline:none}
+.panel input[type=text]:focus{border-color:rgba(232,134,47,.7)}
 .panel button{padding:11px 18px;border-radius:12px;border:1px solid rgba(232,134,47,.45);background:rgba(232,134,47,.15);color:#ffcb8e;font-size:13.5px;cursor:pointer}
 .panel button:hover{background:rgba(232,134,47,.27)}
+.ctrl{max-width:820px;margin:0 auto 34px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;align-items:center;padding:14px 18px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.035)}
+.ctrl label{font-size:12.5px;color:var(--sub);display:flex;align-items:center;gap:8px}
+.ctrl select,.ctrl input[type=range]{accent-color:var(--accent)}
+.ctrl select{padding:7px 10px;border-radius:9px;border:1px solid var(--line);background:#0d2438;color:var(--ink);font-size:12.5px}
+.ctrl input[type=range]{width:130px}
+.ctrl .val{color:#ffcb8e;font-size:12.5px;min-width:38px;display:inline-block}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:18px}
 .card{background:linear-gradient(165deg,rgba(255,255,255,.06),rgba(255,255,255,.015));border:1px solid var(--line);border-radius:18px;padding:18px;overflow:hidden}
 .stage{height:118px;display:flex;align-items:center;justify-content:center;border-radius:12px;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.05);margin-bottom:13px;overflow:hidden;position:relative}
@@ -28,35 +34,66 @@ header p{margin-top:12px;color:var(--sub);font-size:13.5px}
 h2{font-size:15.5px}
 h2 small{font-size:9.5px;color:var(--sub);letter-spacing:.16em;margin-left:6px}
 .card p{color:var(--sub);font-size:12.5px;line-height:1.75;margin-top:6px}
-.foot{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.foot{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:8px}
 code{font-size:11.5px;color:#8fd0ff;background:rgba(143,208,255,.08);padding:3px 8px;border-radius:6px}
-.replay{font-size:11.5px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--ink);cursor:pointer}
+.replay{font-size:11.5px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--ink);cursor:pointer;white-space:nowrap}
 .replay:hover{border-color:rgba(232,134,47,.7);color:#ffcb8e}
 footer{text-align:center;margin-top:48px;color:#52708d;font-size:12px}
 footer a{color:#8fd0ff;text-decoration:none}
 .ch{display:inline-block}
+@keyframes ent-fade{from{opacity:0}to{opacity:1}}
+@keyframes ent-up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes ent-left{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:none}}
+@keyframes ent-zoom{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+@keyframes ex-fade{from{opacity:1}to{opacity:0}}
+@keyframes ex-up{from{opacity:1;transform:none}to{opacity:0;transform:translateY(-16px)}}
+@keyframes ex-zoom{from{opacity:1;transform:none}to{opacity:0;transform:scale(1.08)}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1>文字と数字のエフェクト 深掘り<small>DEEP DIVE 08</small></h1>
-    <p>textnumber-effect の続き。上の欄に入れた文章が、そのまま8つの演出で動きます。</p>
+    <h1>文字と数字のエフェクト 演出編 vol.4<small>DEEP DIVE 08 + VARIATIONS</small></h1>
+    <p>8つの演出に、始まり・終わりの形と、長さ（速さ）の調整をつけました。</p>
   </header>
   <div class="panel">
-    <input id="src" value="REALIZE 137kWh" aria-label="表示する文章">
+    <input type="text" id="src" value="REALIZE 137kWh" aria-label="表示する文章">
     <button id="apply">この文章で動かす</button>
     <button id="allBtn">全部もう一回</button>
   </div>
+  <div class="ctrl">
+    <label>速さ <input type="range" id="speed" min="0.5" max="2" step="0.1" value="1"><span class="val" id="speedVal">1.0×</span></label>
+    <label>始り
+      <select id="start">
+        <option value="fade">フェード</option>
+        <option value="up">下から</option>
+        <option value="left">左から</option>
+        <option value="zoom">拡大</option>
+        <option value="none">なし</option>
+      </select>
+    </label>
+    <label>終わり
+      <select id="end">
+        <option value="fade">フェードアウト</option>
+        <option value="up">上へ抜ける</option>
+        <option value="zoom">縮小消去</option>
+        <option value="none">なし</option>
+      </select>
+    </label>
+  </div>
   <div class="grid" id="grid"></div>
-  <footer>深掘り編 8種 · <a href="https://hhoshizora-usagi.github.io/effect-hub/">Effect Hub へもどる</a></footer>
+  <footer>演出編 vol.4 · 8種＋バリエーション · <a href="https://hhoshizora-usagi.github.io/effect-hub/">Effect Hub へもどる</a></footer>
 </div>
 <script>
 (function(){
   var state={text:'REALIZE 137kWh'};
+  var cfg={speed:1,start:'fade',end:'fade'};
   var LAT='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   var KANA='アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワン';
   var DIG='0123456789';
+  var ENT={fade:'ent-fade',up:'ent-up',left:'ent-left',zoom:'ent-zoom'};
+  var EXI={fade:'ex-fade',up:'ex-up',zoom:'ex-zoom'};
+
   function setFor(c){ if(/[0-9]/.test(c))return DIG; if(/[A-Za-z]/.test(c))return LAT; return KANA; }
   function rnd(s){ return s[Math.floor(Math.random()*s.length)]; }
   function chars(s){ return Array.from(s); }
@@ -65,14 +102,14 @@ footer a{color:#8fd0ff;text-decoration:none}
   function reset(el){ el.style.cssText=''; el.innerHTML=''; }
 
   var CARDS=[
-    {id:'countup',no:'01',name:'カウントアップ',en:'COUNT UP',desc:'数字が0から目標値までなめらかに数え上がる演出。単位つきの数値に向いています。',fx:'countup()'},
-    {id:'odometer',no:'02',name:'オドメーター',en:'ODOMETER',desc:'距離計のように、数字の列がくるくる回って止まる演出。',fx:'odometer()'},
-    {id:'typewriter',no:'03',name:'タイプライター',en:'TYPEWRITER',desc:'1文字ずつ打ち込まれて、カーソルが点滅する演出。',fx:'typewriter()'},
-    {id:'wave',no:'04',name:'ウェーブ',en:'WAVE',desc:'文字が波のようにゆらゆら上下する演出。',fx:'wave()'},
-    {id:'gradient',no:'05',name:'グラデーション流れ',en:'GRADIENT FLOW',desc:'虹色のグラデーションが文字の上を流れていく演出。',fx:'gradient()'},
-    {id:'slot',no:'06',name:'スロット確定',en:'SLOT',desc:'1文字ずつ回転して、左から順に文字が確定していく演出。',fx:'slot()'},
-    {id:'karaoke',no:'07',name:'カラオケ',en:'KARAOKE',desc:'歌詞のように、色が左から右へ塗られていく演出。',fx:'karaoke()'},
-    {id:'scatter',no:'08',name:'ばらけて再集合',en:'SCATTER',desc:'文字がいったん飛び散って、また元の位置に集まる演出。',fx:'scatter()'}
+    {id:'countup',no:'01',name:'カウントアップ',en:'COUNT UP',dur:1300,desc:'数字が0から目標値までなめらかに数え上がる演出。'},
+    {id:'odometer',no:'02',name:'オドメーター',en:'ODOMETER',dur:1500,desc:'距離計のように、数字の列がくるくる回って止まる演出。'},
+    {id:'typewriter',no:'03',name:'タイプライター',en:'TYPEWRITER',dur:1400,desc:'1文字ずつ打ち込まれて、カーソルが点滅する演出。'},
+    {id:'wave',no:'04',name:'ウェーブ',en:'WAVE',dur:4000,desc:'文字が波のようにゆらゆら上下する演出。'},
+    {id:'gradient',no:'05',name:'グラデーション流れ',en:'GRADIENT FLOW',dur:3000,desc:'虹色のグラデーションが文字の上を流れていく演出。'},
+    {id:'slot',no:'06',name:'スロット確定',en:'SLOT',dur:1700,desc:'1文字ずつ回転して、左から順に文字が確定していく演出。'},
+    {id:'karaoke',no:'07',name:'カラオケ',en:'KARAOKE',dur:2200,desc:'歌詞のように、色が左から右へ塗られていく演出。'},
+    {id:'scatter',no:'08',name:'ばらけて再集合',en:'SCATTER',dur:1500,desc:'文字がいったん飛び散って、また元の位置に集まる演出。'}
   ];
 
   function build(el,text){
@@ -86,10 +123,10 @@ footer a{color:#8fd0ff;text-decoration:none}
     return sp;
   }
 
-  function countup(el){
+  function countup(el,dur){
     var src=chars(state.text);
     var hasDigit=src.some(function(c){return /[0-9]/.test(c)});
-    var t0=performance.now(), dur=1300;
+    var t0=performance.now();
     if(hasDigit){
       var sp=build(el,state.text);
       (function frame(now){
@@ -107,7 +144,7 @@ footer a{color:#8fd0ff;text-decoration:none}
     }
   }
 
-  function odometer(el){
+  function odometer(el,dur){
     var cols=[];
     chars(state.text).forEach(function(c){
       if(/[0-9]/.test(c)){
@@ -123,7 +160,7 @@ footer a{color:#8fd0ff;text-decoration:none}
         var s=document.createElement('span'); s.className='ch'; s.innerHTML=nb(c); el.appendChild(s);
       }
     });
-    var t0=performance.now(), dur=1500;
+    var t0=performance.now();
     (function frame(now){
       var p=Math.min(1,(now-t0)/dur), e=1-Math.pow(1-p,3);
       cols.forEach(function(col){ col.strip.style.transform='translateY('+(-(col.target*e)*1.25).toFixed(3)+'em)'; });
@@ -131,33 +168,35 @@ footer a{color:#8fd0ff;text-decoration:none}
     })(t0);
   }
 
-  function typewriter(el){
+  function typewriter(el,dur){
     var sp=build(el,state.text);
     sp.forEach(function(s){s.style.opacity='0'});
     var caret=document.createElement('span'); caret.className='ch'; caret.textContent='|'; caret.style.color='#ffcb8e';
     el.appendChild(caret);
+    var step=Math.max(18,dur/sp.length);
     var i=0;
     var ty=setInterval(function(){
       if(i>=sp.length){ clearInterval(ty); return; }
       sp[i].style.opacity='1'; i++;
-    },75);
-    var bk=setInterval(function(){ caret.style.opacity = caret.style.opacity==='0' ? '1' : '0'; },420);
-    setTimeout(function(){ clearInterval(bk); caret.remove(); }, sp.length*75+1600);
+    },step);
+    var bk=setInterval(function(){ caret.style.opacity = caret.style.opacity==='0' ? '1' : '0'; },Math.max(200,step*5));
+    setTimeout(function(){ clearInterval(bk); caret.remove(); }, dur+800);
   }
 
-  function wave(el){
+  function wave(el,dur){
     var sp=build(el,state.text);
     if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var t0=performance.now();
     (function frame(now){
-      var t=(now-t0)/1000;
-      if(t>6){ sp.forEach(function(s){s.style.transform=''}); return; }
-      sp.forEach(function(s,i){ s.style.transform='translateY('+(Math.sin(t*2.4+i*0.55)*6).toFixed(2)+'px)'; });
+      var t=now-t0;
+      if(t>dur){ sp.forEach(function(s){s.style.transform=''}); return; }
+      var k=t/1000;
+      sp.forEach(function(s,i){ s.style.transform='translateY('+(Math.sin(k*2.4+i*0.55)*6).toFixed(2)+'px)'; });
       requestAnimationFrame(frame);
     })(t0);
   }
 
-  function gradient(el){
+  function gradient(el,dur){
     el.textContent=state.text;
     el.style.backgroundImage='linear-gradient(90deg,#ff9ecb,#ffd479,#7dd3fc,#a78bfa,#ff9ecb)';
     el.style.backgroundSize='300% 100%';
@@ -168,15 +207,15 @@ footer a{color:#8fd0ff;text-decoration:none}
     var t0=performance.now();
     (function frame(now){
       var t=now-t0;
-      if(t>9000) return;
-      el.style.backgroundPosition=(((t/2600)%1)*100).toFixed(1)+'% 0';
+      if(t>dur) return;
+      el.style.backgroundPosition=(((t/(dur*0.5))%1)*100).toFixed(1)+'% 0';
       requestAnimationFrame(frame);
     })(t0);
   }
 
-  function slot(el){
+  function slot(el,dur){
     var sp=build(el,state.text), src=chars(state.text);
-    var t0=performance.now(), dur=1700;
+    var t0=performance.now();
     (function frame(now){
       var p=Math.min(1,(now-t0)/dur);
       src.forEach(function(c,i){
@@ -189,10 +228,10 @@ footer a{color:#8fd0ff;text-decoration:none}
     })(t0);
   }
 
-  function karaoke(el){
+  function karaoke(el,dur){
     var sp=build(el,state.text);
     sp.forEach(function(s){ s.style.color='rgba(236,243,251,.28)'; });
-    var t0=performance.now(), dur=2200;
+    var t0=performance.now();
     (function frame(now){
       var p=Math.min(1,(now-t0)/dur);
       var upto=Math.floor(p*sp.length);
@@ -202,10 +241,10 @@ footer a{color:#8fd0ff;text-decoration:none}
     })(t0);
   }
 
-  function scatter(el){
+  function scatter(el,dur){
     var sp=build(el,state.text);
     var dirs=sp.map(function(){ return {x:(Math.random()-.5)*260, y:(Math.random()-.5)*140, r:(Math.random()-.5)*160}; });
-    var t0=performance.now(), dur=1500;
+    var t0=performance.now();
     (function frame(now){
       var p=Math.min(1,(now-t0)/dur);
       var out = p<0.45 ? (p/0.45) : 1-((p-0.45)/0.55);
@@ -222,14 +261,29 @@ footer a{color:#8fd0ff;text-decoration:none}
 
   var runners={countup:countup,odometer:odometer,typewriter:typewriter,wave:wave,gradient:gradient,slot:slot,karaoke:karaoke,scatter:scatter};
 
-  function playAll(){
-    CARDS.forEach(function(c){
-      var el=document.getElementById('fx-'+c.id);
-      if(!el) return;
-      reset(el);
-      runners[c.id](el);
-    });
+  function playOne(id){
+    var card=null;
+    for(var i=0;i<CARDS.length;i++){ if(CARDS[i].id===id){card=CARDS[i];break;} }
+    if(!card) return;
+    var el=document.getElementById('fx-'+id);
+    if(!el) return;
+    var stage=el.parentNode;
+    var dur=card.dur/cfg.speed;
+    reset(el);
+    stage.style.animation='none';
+    void stage.offsetWidth;
+    if(cfg.start!=='none'){ stage.style.animation=ENT[cfg.start]+' '+Math.max(140,Math.min(420,dur*0.3))+'ms ease both'; }
+    else { stage.style.animation=''; }
+    runners[id](el,dur);
+    if(el.__exitTimer) clearTimeout(el.__exitTimer);
+    if(cfg.end!=='none'){
+      el.__exitTimer=setTimeout(function(){
+        stage.style.animation=EXI[cfg.end]+' '+Math.max(200,Math.min(500,dur*0.35))+'ms ease both';
+      },dur);
+    }
   }
+
+  function playAll(){ CARDS.forEach(function(c){ playOne(c.id); }); }
 
   function render(){
     var grid=document.getElementById('grid');
@@ -240,15 +294,11 @@ footer a{color:#8fd0ff;text-decoration:none}
       art.innerHTML='<div class="stage"><span class="big" id="fx-'+c.id+'"></span></div>'+
         '<div class="head"><span class="no">'+c.no+'</span><h2>'+c.name+'<small>'+c.en+'</small></h2></div>'+
         '<p>'+c.desc+'</p>'+
-        '<div class="foot"><code>'+c.fx+'</code><button class="replay" data-fx="'+c.id+'">もう一回 ↻</button></div>';
+        '<div class="foot"><code>'+c.dur+'ms</code><button class="replay" data-fx="'+c.id+'">もう一回 ↻</button></div>';
       grid.appendChild(art);
     });
     grid.querySelectorAll('.replay').forEach(function(b){
-      b.addEventListener('click',function(){
-        var id=b.getAttribute('data-fx');
-        var el=document.getElementById('fx-'+id);
-        reset(el); runners[id](el);
-      });
+      b.addEventListener('click',function(){ playOne(b.getAttribute('data-fx')); });
     });
   }
 
@@ -258,6 +308,13 @@ footer a{color:#8fd0ff;text-decoration:none}
     playAll();
   });
   document.getElementById('allBtn').addEventListener('click',playAll);
+  document.getElementById('speed').addEventListener('input',function(e){
+    cfg.speed=parseFloat(e.target.value);
+    document.getElementById('speedVal').textContent=cfg.speed.toFixed(1)+'×';
+    playAll();
+  });
+  document.getElementById('start').addEventListener('change',function(e){ cfg.start=e.target.value; playAll(); });
+  document.getElementById('end').addEventListener('change',function(e){ cfg.end=e.target.value; playAll(); });
 
   render();
   playAll();
