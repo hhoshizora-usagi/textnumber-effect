@@ -29,10 +29,14 @@ button{font:inherit;color:inherit}
 .label{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .label::before{content:"";display:inline-block;width:22px;height:2px;background:var(--accent);vertical-align:middle;margin-right:10px}
 .hl{color:var(--accent);font-weight:700}
+
+/* ---------- ヘッダー ---------- */
 .page-top{padding:88px 0 40px}
 .page-top h1{font-size:clamp(32px,4.6vw,60px);font-weight:700;letter-spacing:.04em;margin:16px 0 18px}
 .page-top h1 small{font-size:.42em;font-family:var(--mono);color:var(--accent);margin-left:.4em;letter-spacing:.1em}
 .page-top p{max-width:760px;color:var(--ink-soft)}
+
+/* ---------- 操作パネル ---------- */
 .controls{position:sticky;top:0;z-index:50;background:rgba(9,29,48,.94);backdrop-filter:blur(8px);border-block:1px solid var(--line)}
 .controls .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;padding:14px 0}
 .ctrl{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
@@ -42,8 +46,11 @@ button{font:inherit;color:inherit}
 .seg-btn.on{background:var(--accent);border-color:var(--accent);color:var(--dark);font-weight:700}
 .ctrl input{width:170px;background:var(--well);border:1px solid rgba(255,255,255,.2);color:var(--ink);padding:5px 10px;font-size:13px}
 .ctrl input:focus{outline:none;border-color:var(--accent)}
+.wide-in{width:340px !important}
 .replay-all{margin-left:auto;border:1px solid var(--accent);background:transparent;color:var(--accent);padding:8px 18px;font-size:13px;letter-spacing:.08em;cursor:pointer;transition:background .3s,color .3s}
 .replay-all:hover{background:var(--accent);color:var(--dark)}
+
+/* ---------- カード ---------- */
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;padding:48px 0 40px}
 .card{background:var(--dark-2);border:1px solid var(--line);display:flex;flex-direction:column;transition:border-color .3s;min-width:0}
 .card:hover{border-color:color-mix(in srgb,var(--accent) 60%,transparent)}
@@ -64,6 +71,8 @@ button{font:inherit;color:inherit}
 .replay{border:1px solid rgba(255,255,255,.22);background:transparent;padding:6px 14px;font-size:12px;cursor:pointer;color:var(--ink-soft);letter-spacing:.06em;transition:border-color .2s,color .2s;white-space:nowrap}
 .replay:hover{border-color:var(--accent);color:var(--accent)}
 .big{font-size:clamp(34px,4.6vw,58px);font-weight:700;line-height:1.3;letter-spacing:.04em;white-space:nowrap}
+
+/* ===== 01 グリッチ ===== */
 .glitch{position:relative;display:inline-block;font-weight:900}
 .glitch::before,.glitch::after{content:attr(data-text);position:absolute;inset:0;opacity:0;pointer-events:none}
 .glitch.on{animation:shake .12s steps(2) infinite}
@@ -72,6 +81,8 @@ button{font:inherit;color:inherit}
 @keyframes gl1{0%{clip-path:inset(8% 0 70% 0)}25%{clip-path:inset(58% 0 12% 0)}50%{clip-path:inset(30% 0 44% 0)}75%{clip-path:inset(82% 0 4% 0)}}
 @keyframes gl2{0%{clip-path:inset(64% 0 8% 0)}25%{clip-path:inset(12% 0 66% 0)}50%{clip-path:inset(42% 0 30% 0)}75%{clip-path:inset(2% 0 86% 0)}}
 @keyframes shake{0%{transform:translate(1px,0) skewX(-4deg)}50%{transform:translate(-2px,1px) skewX(3deg)}}
+
+/* ===== 02 ネオン ===== */
 .neon{font-weight:400;letter-spacing:.08em;font-family:"Arial Rounded MT Bold",var(--font)}
 .neon span{display:inline-block;color:rgba(255,255,255,.08);text-shadow:none}
 .neon.go span{animation:ignite 1.5s steps(1) forwards;animation-delay:var(--d)}
@@ -86,6 +97,8 @@ button{font:inherit;color:inherit}
   71%{color:#fff7ee;text-shadow:0 0 8px var(--accent)}
 }
 .neon-wall{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,color-mix(in srgb,var(--accent) 10%,transparent),transparent 65%),repeating-linear-gradient(0deg,rgba(255,255,255,.015) 0 2px,transparent 2px 26px);pointer-events:none}
+
+/* ===== 05 スロットリール ===== */
 .reels{display:inline-flex;flex-wrap:nowrap;justify-content:center;gap:5px}
 .reel{position:relative;display:inline-block;width:.9em;height:1.25em;overflow:hidden;background:linear-gradient(180deg,#081320,#152536 50%,#081320);border:1px solid #1d2b3a;border-radius:5px}
 .reel.sp{width:.4em;background:none;border:0}
@@ -94,6 +107,8 @@ button{font:inherit;color:inherit}
 .reel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,14,24,.9),transparent 30%,transparent 70%,rgba(5,14,24,.9));pointer-events:none}
 .reel.sp::after{display:none}
 .reel.done .strip i:last-child{color:var(--accent)}
+
+/* ===== 06 キューブ ===== */
 .cubes{display:inline-flex;flex-wrap:nowrap;justify-content:center;gap:6px}
 .cube{display:inline-block;width:.95em;height:1.25em;perspective:400px}
 .cube.sp{width:.4em}
@@ -104,21 +119,29 @@ button{font:inherit;color:inherit}
 .cube .under{background:#1a2f45;border:1px solid #23384d;transform:rotateX(90deg) translateZ(.625em)}
 .cube.sp .f{background:none;border:0}
 .cube.fin .front{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 50%,#23384d)}
+
+/* ===== 07 手書き ===== */
 .hand svg{width:100%;height:170px;overflow:visible}
 .hand text{font-weight:700;fill:transparent;stroke:var(--accent);stroke-width:1.2;stroke-linejoin:round;paint-order:stroke}
 .hand.go text{animation:draw var(--dur,2.6s) cubic-bezier(.4,.1,.3,1) forwards,fillin .8s ease calc(var(--dur,2.6s) - .3s) forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
 @keyframes fillin{to{fill:var(--ink);stroke-width:.4}}
+
+/* ===== 08 せり上がり ===== */
 .rise{display:inline-block}
 .rise .m{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .01em}
 .rise .m i{display:inline-block;font-style:normal;transform:translateY(110%) rotate(6deg);transition:transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d)}
 .rise.go .m i{transform:none}
 .rise .m i.n{color:var(--accent);font-size:1.18em;font-family:var(--font)}
+
+/* ===== 09 マーカー ===== */
 .marker{font-size:clamp(18px,2.1vw,24px);line-height:2.1;text-align:left;max-width:560px;color:var(--ink-soft)}
 .marker mark{background:linear-gradient(transparent 60%,color-mix(in srgb,var(--accent) 55%,transparent) 60%) no-repeat;background-size:0% 100%;color:var(--ink);font-weight:700;padding:0 .1em;transition:background-size .9s cubic-bezier(.3,.7,.2,1),color .4s;transition-delay:var(--d)}
 .marker mark.num{font-size:1.45em;color:var(--ink);font-family:var(--font);letter-spacing:.02em}
 .marker.go mark{background-size:100% 100%}
 .marker.go mark.num{color:var(--accent)}
+
+/* ===== ミニゲーム ===== */
 .game{grid-column:1 / -1}
 .game .stage{min-height:420px;flex-direction:column;gap:18px;padding:40px 24px}
 .g-top{display:flex;gap:28px;align-items:center;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--muted);letter-spacing:.14em}
@@ -141,13 +164,108 @@ button{font:inherit;color:inherit}
 .g-hint{font-size:12px;color:var(--muted);letter-spacing:.08em}
 .stage canvas.g-fx{position:absolute;inset:0;pointer-events:none;width:100%;height:100%}
 #game{scroll-margin-top:90px}
+
+/* ============================================================
+   長文用エフェクト（詳細説明の文＝段落単位の演出）
+   ============================================================ */
+.sect{grid-column:1 / -1;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:36px 0 0;border-top:1px solid var(--line);margin-top:8px;scroll-margin-top:90px}
+.sect h2{font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:.02em;margin-top:12px}
+.sect h2 small{font-size:.42em;font-family:var(--mono);color:var(--accent);letter-spacing:.1em;margin-left:.6em}
+.sect p{max-width:620px;color:var(--ink-soft);font-size:14px}
+
+.lt{width:100%;max-width:640px;text-align:left;font-size:15px;line-height:1.95;color:var(--ink-soft);position:relative}
+.lt p{position:relative}
+.lt p b{color:var(--ink);font-weight:700}
+.lt p .num{color:var(--accent);font-weight:700;font-family:var(--font)}
+.lt .lead{font-size:1.35em;font-weight:700;color:var(--ink);line-height:1.6;letter-spacing:.02em;margin-bottom:6px}
+.lt .lead::after{content:"";display:block;width:0;height:2px;background:var(--accent);margin-top:12px;transition:width .9s cubic-bezier(.3,.7,.2,1)}
+.lt.go .lead::after{width:64px}
+
+/* --- 11 段落リビール（行ごと フェード＋せり上がり）--- */
+.fk p{opacity:0;transform:translateY(10px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i) * 160ms + 120ms)}
+.fk.go p{opacity:1;transform:none}
+.fk.go .lead::after{transition-delay:.1s}
+
+/* --- 12 ワイプ表示（左→右にめくれる）--- */
+.wp p{opacity:0;clip-path:inset(0 100% 0 0);transition:opacity .4s linear,clip-path .85s cubic-bezier(.3,.7,.2,1);transition-delay:calc(var(--i) * 220ms)}
+.wp.go p{opacity:1;clip-path:inset(0 0 0 0)}
+
+/* --- 13 ブラー解除（ぼやけからピントが合う）--- */
+.bl p{opacity:0;filter:blur(10px);transform:scale(1.04);transition:opacity .6s ease,filter 1s ease,transform 1s ease;transition-delay:calc(var(--i) * 180ms)}
+.bl.go p{opacity:1;filter:none;transform:none}
+
+/* --- 15 宙に浮く見出し＋本文ずらす --- */
+.hv .lead{transition:transform 1s cubic-bezier(.2,.7,.2,1),letter-spacing 1s ease,color .6s;transition-delay:.1s}
+.hv.go .lead{letter-spacing:.08em;transform:translateY(-2px)}
+.hv p:not(.lead){opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i) * 170ms + 300ms)}
+.hv.go p:not(.lead){opacity:1;transform:none}
+
+/* --- 17 行線が横に伸びる --- */
+.bd p{opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease;transition-delay:calc(var(--i) * 180ms)}
+.bd p::before{content:"";position:absolute;left:-14px;top:.6em;bottom:.6em;width:2px;background:var(--accent);transform:scaleY(0);transform-origin:top;transition:transform .5s cubic-bezier(.3,.7,.2,1)}
+.bd p::after{content:"";position:absolute;left:-14px;top:.6em;width:0;height:2px;background:var(--accent);transition:width .5s cubic-bezier(.3,.7,.2,1);transition-delay:.12s}
+.bd.go p{opacity:1;transform:none}
+.bd.go p::before{transform:scaleY(1)}
+.bd.go p::after{width:0}
+.bd p.on::before{transform:scaleY(0)}
+
+/* --- 18 段落トレース（フェードだけ・雑誌風）--- */
+.tl p{opacity:0;transition:opacity 1.1s ease;transition-delay:calc(var(--i) * 140ms)}
+.tl.go p{opacity:1}
+
+/* --- 19 マーカー順次＋本文フェード --- */
+.mq p{opacity:0;transition:opacity .6s ease;transition-delay:calc(var(--i) * 200ms)}
+.mq.go p{opacity:1}
+.mq mark{background:linear-gradient(transparent 58%,color-mix(in srgb,var(--accent) 55%,transparent) 58%) no-repeat;background-size:0% 100%;color:var(--ink);font-weight:700;padding:0 .08em;transition:background-size .8s cubic-bezier(.3,.7,.2,1);transition-delay:calc(var(--i) * 200ms + 600ms)}
+.mq.go mark{background-size:100% 100%}
+.mq p .num{color:var(--ink);letter-spacing:.02em}
+.mq.go p .num{color:var(--accent);transition:color .4s ease;transition-delay:calc(var(--i) * 200ms + .4s)}
+
+/* --- 20 見出しの下線が引かれる --- */
+.un .lead{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.un.go .lead{transform:translateY(-1px)}
+.un p:not(.lead){opacity:0;transform:translateY(8px);transition:opacity .6s ease,transform .6s ease;transition-delay:calc(var(--i) * 160ms + 150ms)}
+.un.go p:not(.lead){opacity:1;transform:none}
+
+/* ---------- 追加の単体エフェクト ---------- */
+/* キネ字：単語が1つずつ飛び込む */
+.kin{font-size:clamp(20px,2.4vw,26px);font-weight:700;line-height:2;letter-spacing:.02em;max-width:600px;text-align:center}
+.kin span{display:inline-block;padding:0 .06em;color:var(--ink);opacity:0;transform:translateY(18px) scale(.92);transition:opacity .45s ease,transform .55s cubic-bezier(.2,.9,.2,1.15);transition-delay:calc(var(--i) * 90ms)}
+.kin span.hot{color:var(--accent)}
+.kin.go span{opacity:1;transform:none}
+/* タイピング風 */
+.type{font-family:var(--mono);font-size:15px;line-height:2.05;max-width:620px;text-align:left;color:var(--ink-soft);min-height:5em}
+.type .tl1{color:var(--ink)}
+.type .tl1::after{content:"▌";color:var(--accent);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.type .ty{color:var(--accent)}
+/* 図形：矢印 */
+.shp{position:relative;display:flex;align-items:flex-start;gap:0;max-width:560px;margin:26px 0 10px;text-align:left;font-size:15px;line-height:1.9;color:var(--ink-soft)}
+.shp .arw{flex:0 0 74px;height:2px;background:rgba(255,255,255,.16);position:relative;margin-top:1.05em;border-radius:2px;overflow:hidden}
+.shp .arw::after{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--accent);transition:width .9s cubic-bezier(.3,.7,.2,1);transition-delay:.2s;border-radius:2px}
+.shp .arw i{position:absolute;right:-1px;top:50%;width:9px;height:9px;border-right:2px solid var(--accent);border-top:2px solid var(--accent);transform:translateY(-50%) rotate(45deg);opacity:0;transition:opacity .3s ease;transition-delay:1s}
+.shp.go .arw::after{width:100%}
+.shp.go .arw i{opacity:1}
+.shp .body{opacity:0;transform:translateX(-6px);transition:opacity .6s ease,transform .6s ease;transition-delay:1.15s}
+.shp.go .body{opacity:1;transform:none}
+/* 囲み枠 */
+.box{position:relative;max-width:480px;margin:8px auto;padding:18px 26px;text-align:left;font-size:15px;line-height:1.9;color:var(--ink-soft);border:1px solid rgba(255,255,255,.14)}
+.box::before,.box::after{content:"";position:absolute;width:18px;height:18px;border:2px solid var(--accent);opacity:0;transition:opacity .5s ease;transition-delay:.7s}
+.box::before{left:-1px;top:-1px;border-right:0;border-bottom:0}
+.box::after{right:-1px;bottom:-1px;border-left:0;border-top:0}
+.box.go::before,.box.go::after{opacity:1}
+.box .body{opacity:0;transition:opacity .7s ease;transition-delay:1s}
+.box.go .body{opacity:1}
+
 footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color:var(--muted);letter-spacing:.08em}
+
 @media (max-width:900px){
   .grid{grid-template-columns:1fr;gap:20px}
   .replay-all{margin-left:0}
   .controls{position:static}
   .page-top{padding:56px 0 28px}
   .ctrl input{width:100%}
+  .wide-in{width:100% !important}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -173,6 +291,9 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
       <button class="seg-btn" data-accent="blue">ブルー</button>
       <button class="seg-btn" data-accent="green">グリーン</button>
       <button class="seg-btn" data-accent="red">レッド</button>
+    </div>
+    <div class="ctrl"><b>長文</b>
+      <input id="longInput" class="wide-in" type="text" maxlength="80" placeholder="長文サンプルの差し替え（80文字まで）" aria-label="長文エフェクトに表示する段落を入力">
     </div>
     <button class="replay-all" id="replayAll">全部もう一回 ↻</button>
   </div>
@@ -280,6 +401,149 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
     </div>
   </article>
 
+  <!-- ============================================================
+       長文用エフェクト（詳細説明の文）
+       ============================================================ -->
+  <div class="sect" id="longtext">
+    <div>
+      <span class="label">LONG TEXT EFFECTS</span>
+      <h2>長文<span class="hl">エフェクト</span><small>説明文・詳細テロップ用</small></h2>
+    </div>
+    <p>小さめの文字で何行も続く「詳細説明」のための演出です。行ごとに出す・ぼやけから浮かび上がらせる・マーカーを順に引く・バッジや矢印を添える など、段落まるごと向けのエフェクトを12種類そろえました。上のパネルの<input id="longInputHint" style="width:auto;background:transparent;border:0;border-bottom:1px dotted var(--accent);color:var(--accent);font-size:14px;padding:0 2px" value="長文" aria-label="長文入力欄の案内"> 欄に文章を入れると、全部の長文エフェクトに反映されます。</p>
+  </div>
+
+  <!-- 11 段落リビール -->
+  <article class="card" data-fx="fk">
+    <div class="stage"><div class="lt fk" id="fx-fk"></div></div>
+    <div class="meta">
+      <div class="head"><span class="no">11</span><h2>段落リビール<small>STAGGER FADE</small></h2></div>
+      <p>上から<span class="hl">行ごとに順番に</span>、ふわっと浮かび上がります。見出しの下の線もゆっくり伸びます。いちばん基本の型です。</p>
+      <p class="use"><b>使いどころ</b>サービス説明・フィーチャーの詳細、長めのナレーション</p>
+      <div class="foot"><code>fkPlay()</code><button class="replay">もう一回 ↻</button></div>
+    </div>
+  </article>
+
+  <!-- 12 ワイプ表示 -->
+  <article class="card" data-fx="wp">
+    <div class="stage"><div class="lt wp" id="fx-wp"></div></div>
+    <div class="meta">
+      <div class="head"><span class="no">12</span><h2>ワイプ表示<small>WIPE IN</small></h2></div>
+      <p>行が<span class="hl">左から右へめくれる</span>ように現れます。文字が「書かれていく」ような速さで、テンポよく出したい時に。</p>
+      <p class="use"><b>使いどころ</b>リスト形式の説明、手順の列挙</p>
+      <div class="foot"><code>wpPlay()</code><button class="replay">もう一回 ↻</button></div>
+    </div>
+  </article>
+
+  <!-- 13 ブラー解除 -->
+  <article class="card" data-fx="bl">
+    <div class="stage"><div class="lt bl" id="fx-bl"></div></div>
+    <div class="meta">
+      <div class="head"><span class="no">13</span><h2>ブラー解除<small>FOCUS IN</small></h2></div>
+      <p>行が<span class="hl">ぼやけた状態からピントが合う</span>ようにくっきりしていきます。少し迫力のある段落向き。</p>
+      <p class="use"><b>使いどころ</b>製品の解説、じっくり読ませたい本文</p>
+      <div class="foot"><code>blPlay()</code><button class="replay">もう一回 ↻</button></div>
+    </div>
+  </article>
+
+  <!-- 14 キネ字 -->
+  <article class="card" data-fx="kin">
+    <div class="stage"><div class="kin" id="fx-kin"></div></div>
+    <div class="meta">
+      <div class="head"><span class="no">14</span><h2>キネ字<small>KINETIC WORDS</small></h2></div>
+      <p>短い文を<span class="hl">単語単位で1つずつ飛び込ませる</span>演出です。数字や強調したい言葉はアクセント色になります。</p>
+      <p class="use"><b>使いどころ</b>キャッチコピー、テロップの強調部分</p>
+      <div class="foot"><code>kinPlay()</code><button class="replay">もう一回 ↻</button></div>
+    </div>
+  </article>
+
+  <!-- 15 宙に浮く見出し -->
+  <article class="card" data-fx="hv">
+    <div class="stage"><div class="lt hv" id="fx-hv"></div></div>
+    <div class="meta">
+      <div class="head"><span class="no">15</span><h2>ホバー見出し<small>HOVER TITLE</small></h2></div>
+      <p>見出しだけ少し<span class="hl">上に浮き上がって字間が開き</span>、そのあと本文が続きます。見出し→本文の区切りをはっきりさせたい時に。</p>
+      <p class="use"><b>使いどころ</b>章立ての見出し＋説明、インタビュー風</p>
+      <div class="foot"><code>hvPlay()</code><button class="replay">もう一回 ↻</button></div>
+    </div>
+  </article>
+
+  <!-- 16 タイピング風 -->
+  <article class="card" data-fx="type">
+    <div class="stage"><div class="type" id="fx-type"></div></div>
+    <div class="meta">
+      <div class="head"><span class="no">16</span><h2>タイピング表示<small>TYPEWRITER</small></h2></div>
+      <p>1文字ずつ入力されていく<span class="hl">タイピング風</span>。途中で改行も入ります。等幅フォントなので技術的な説明にも合います。</p>
+      <p class="use"><b>使いどころ</b>スペック表・仕様の詳細、コード風の説明</p>
+      <div class="foot"><code>typePlay()</code><button class="replay">もう一回 ↻</button></div>
+    </div>
+  </article>
+
+  <!-- 17 行線が伸びる -->
+  <article class="card" data-fx="bd">
+    <div class="stage"><div class="lt bd" id="fx-bd"></div></div>
+    <div class="meta">
+      <div class="head"><span class="no">17</span><h2>段落ガイド線<small>LINE GUIDE</small></h2></div>
+      <p>段落の左に<span class="hl">縦線が上から伸びて</span>、行の数だけ段々に現れます。引用や箇条書きの本文に。</p>
+      <p class="use"><b>使いどころ</b>引用・規約・注記のような連続した段落</p>
+      <div class="foot"><code>bdPlay()</code><button class="replay">もう一回 ↻</button></div>
+    </div>
+  </article>
+
+  <!-- 18 段落トレース -->
+  <article class="card" data-fx="tl">
+    <div class="stage"><div class="lt tl" id="fx-tl"></div></div>
+    <div class="meta">
+      <div class="head"><span class="no">18</span><h2>段落トレース<small>SLOW FADE</small></h2></div>
+      <p>いちばん落ち着いた演出。<span class="hl">ゆっくり濃く</span>なっていくだけなので、読むことを邪魔しません。長めの本文に。</p>
+      <p class="use"><b>使いどころ</b>お知らせ本文・詳細説明・FAQ</p>
+      <div class="foot"><code>tlPlay()</code><button class="replay">もう一回 ↻</button></div>
+    </div>
+  </article>
+
+  <!-- 19 マーカー順次 -->
+  <article class="card" data-fx="mq">
+    <div class="stage"><div class="lt mq" id="fx-mq"></div></div>
+    <div class="meta">
+      <div class="head"><span class="no">19</span><h2>順次マーカー<small>SEQUENTIAL MARK</small></h2></div>
+      <p>行が現れたあと、キーワードに<span class="hl">マーカーが順番に引かれ</span>、数字の色も変わります。09の長文版です。</p>
+      <p class="use"><b>使いどころ</b>長所・ポイントの羅列、数字入りの説明</p>
+      <div class="foot"><code>mqPlay()</code><button class="replay">もう一回 ↻</button></div>
+    </div>
+  </article>
+
+  <!-- 20 下線が引かれる -->
+  <article class="card" data-fx="un">
+    <div class="stage"><div class="lt un" id="fx-un"></div></div>
+    <div class="meta">
+      <div class="head"><span class="no">20</span><h2>見出しアンダーライン<small>DRAW LINE</small></h2></div>
+      <p>見出しの下に<span class="hl">アクセント色の線が引かれ</span>、そのあと本文が続きます。落ち着いて使える解説用の型。</p>
+      <p class="use"><b>使いどころ</b>事業概要・会社紹介の説明文</p>
+      <div class="foot"><code>unPlay()</code><button class="replay">もう一回 ↻</button></div>
+    </div>
+  </article>
+
+  <!-- 21 矢印つき -->
+  <article class="card" data-fx="shp">
+    <div class="stage"><div class="shp" id="fx-shp"><span class="arw"><i></i></span><span class="body" id="fx-shp-body"></span></div></div>
+    <div class="meta">
+      <div class="head"><span class="no">21</span><h2>矢印つき説明<small>ARROW ANNOTATION</small></h2></div>
+      <p>本文の横に<span class="hl">矢印が伸びて</span>、その先に説明が現れます。「図形を添える」タイプのエフェクトです。</p>
+      <p class="use"><b>使いどころ</b>注記・補足・キャプション</p>
+      <div class="foot"><code>shpPlay()</code><button class="replay">もう一回 ↻</button></div>
+    </div>
+  </article>
+
+  <!-- 22 囲み枠 -->
+  <article class="card" data-fx="box">
+    <div class="stage"><div class="box" id="fx-box"><div class="body" id="fx-box-body"></div></div></div>
+    <div class="meta">
+      <div class="head"><span class="no">22</span><h2>囲み枠コールアウト<small>FRAME BOX</small></h2></div>
+      <p>枠の<span class="hl">四隅の角から線が出てきて</span>、その内側に文章が収まります。ワンポイントの説明に。</p>
+      <p class="use"><b>使いどころ</b>重要なお知らせ・条件・注意書き</p>
+      <div class="foot"><code>boxPlay()</code><button class="replay">もう一回 ↻</button></div>
+    </div>
+  </article>
+
   <article class="card game" data-fx="game" id="game">
     <div class="stage">
       <canvas class="g-fx" id="g-fx"></canvas>
@@ -308,6 +572,9 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var state = { text:'REALIZE 137kWh' };
 
+  /* ============================================================
+     共通ユーティリティ
+     ============================================================ */
   var DIG = '0123456789';
   var LAT = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   var KANA = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワン';
@@ -317,10 +584,11 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
     return KANA;
   }
   function rnd(set){ return set[Math.floor(Math.random() * set.length)]; }
-  function chars(s){ return Array.from(s); }
+  function chars(s){ return Array.from(s); }              /* 絵文字・サロゲートも1文字扱い */
   function esc(c){ return c.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
   function accent(){ return getComputedStyle(root).getPropertyValue('--accent').trim() || '#d97721'; }
   var FONT = '"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Arial,sans-serif';
+  /* キャンバスをCSSサイズ×端末の解像度に合わせる */
   function fitCanvas(cv, h){
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
     var w = cv.parentNode.clientWidth;
@@ -329,6 +597,7 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
     var g = cv.getContext('2d'); g.setTransform(dpr, 0, 0, dpr, 0, 0);
     return {g:g, w:w, h:h};
   }
+  /* .big の文字を1行に収める（文字ならmeasure、マス目系はマス数で計算） */
   var _mc = document.createElement('canvas').getContext('2d');
   function fitBig(el, text, cellEm){
     var avail = el.closest('.stage').clientWidth - 56, max = 58, fs;
@@ -336,6 +605,7 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
     else { _mc.font = '900 100px ' + FONT; fs = avail * 100 / (_mc.measureText(text).width * 1.1 || 1); }
     el.style.fontSize = Math.max(16, Math.min(max, fs)) + 'px';
   }
+  /* 横幅に収まるフォントサイズを計算 */
   function fitFont(g, text, maxW, maxH, weight){
     var fs = 100;
     g.font = (weight || 'bold') + ' ' + fs + 'px ' + FONT;
@@ -343,6 +613,9 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
     return Math.max(12, Math.min(maxH, fs * maxW / mw));
   }
 
+  /* ============================================================
+     01 グリッチ
+     ============================================================ */
   var glitchLoop = null;
   function glitchText(el, text){
     clearTimeout(glitchLoop);
@@ -372,6 +645,9 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
     })();
   }
 
+  /* ============================================================
+     02 ネオン
+     ============================================================ */
   function neonText(el, text){
     var cs = chars(text);
     if (el.classList.contains('big')) fitBig(el, text);
@@ -384,6 +660,9 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
     el.classList.remove('go'); void el.offsetWidth; el.classList.add('go');
   }
 
+  /* ============================================================
+     03 パーティクル集合
+     ============================================================ */
   var P = {parts:[], raf:0, mouse:null};
   function particleText(cv, text){
     var c = fitCanvas(cv, 240), g = c.g;
@@ -398,6 +677,7 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
     for (var y = 0; y < off.height; y += gap)
       for (var x = 0; x < off.width; x += gap)
         if (data[(y * off.width + x) * 4 + 3] > 128) pts.push([x, y]);
+    /* 既存の粒を使い回す（形が変わる時に流れるように移動） */
     var parts = P.parts;
     pts.forEach(function(pt, i){
       var p = parts[i];
@@ -436,6 +716,9 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
     cv.onpointerleave = function(){ P.mouse = null; };
   }
 
+  /* ============================================================
+     04 マトリックス・リビール
+     ============================================================ */
   var M = {raf:0};
   function matrixReveal(cv, text){
     cancelAnimationFrame(M.raf); clearTimeout(M.to);
@@ -445,6 +728,7 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
     var rows = Math.ceil(c.h / cell) + 1;
     var startX = (c.w - cell * cs.length) / 2;
     var baseRow = Math.floor(rows * 0.55);
+    /* 文字の列＋左右の飾りの列 */
     var cols = [];
     var extra = Math.ceil(startX / cell);
     for (var i = -extra; i < cs.length + extra; i++){
@@ -472,6 +756,7 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
           }
           if (col.row * cell > c.h + cell * 6) col.row = -Math.floor(Math.random() * 14);
         });
+        /* 確定した文字は毎フレーム上書きしてくっきり保つ */
         cols.forEach(function(col){
           if (!col.locked || col.deco) return;
           var y = baseRow * cell + cell / 2;
@@ -498,6 +783,9 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
     M.raf = requestAnimationFrame(tick);
   }
 
+  /* ============================================================
+     05 スロットリール
+     ============================================================ */
   function slotText(el, text){
     var cs = chars(text);
     fitBig(el, text, 1.04);
@@ -524,6 +812,9 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
     }); });
   }
 
+  /* ============================================================
+     06 キューブ回転
+     ============================================================ */
   function cubeText(el, text){
     var cs = chars(text);
     fitBig(el, text, 1.08);
@@ -556,6 +847,9 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
     });
   }
 
+  /* ============================================================
+     07 手書きストローク
+     ============================================================ */
   function handText(el, text){
     var NS = 'http://www.w3.org/2000/svg';
     el.innerHTML = '';
@@ -577,6 +871,9 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
     el.classList.remove('go'); void el.offsetWidth; el.classList.add('go');
   }
 
+  /* ============================================================
+     08 せり上がり（数字は自動で強調）
+     ============================================================ */
   function riseText(el, text){
     var cs = chars(text);
     if (el.classList.contains('big')) fitBig(el, text);
@@ -588,8 +885,14 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
     requestAnimationFrame(function(){ el.classList.add('go'); });
   }
 
+  /* ============================================================
+     09 蛍光マーカー（文章は固定。CSSだけで動く）
+     ============================================================ */
   function markerPlay(el){ el.classList.remove('go'); void el.offsetWidth; requestAnimationFrame(function(){ el.classList.add('go'); }); }
 
+  /* ============================================================
+     10 蛍光表示管（VFD）
+     ============================================================ */
   var V = {raf:0};
   function vfdText(cv, text){
     cancelAnimationFrame(V.raf);
@@ -627,7 +930,9 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
         }
       }
       g.shadowBlur = 0;
+      /* 走査線 */
       if (p < 1){ g.fillStyle = 'rgba(160,255,235,.18)'; g.fillRect(ox + scan * cell, oy - 6, cell, ROWS * cell + 12); }
+      /* 前面のメッシュ */
       g.fillStyle = 'rgba(0,0,0,.25)';
       for (var my = oy; my < oy + ROWS * cell; my += 3) g.fillRect(ox, my, cols * cell, 1);
       if (p < 1) V.raf = requestAnimationFrame(draw);
@@ -635,6 +940,103 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
     V.raf = requestAnimationFrame(draw);
   }
 
+  /* ============================================================
+     長文用エフェクト：中身（見出し＋段落）の生成と入力反映
+     ============================================================ */
+  var LT = {
+    lead: '蓄電池と太陽光発電設備を\u3001構想から運用までひとつの窓口で。',
+    lines: [
+      '設備の設置に必要な8項目\u2014設計\u30fb施工\u30fb保守\u307b\u304b\u2014をチームで対応します。',
+      '導入済みの137kWh設備から、外部蓄電池の余剰を使って\u3001無駄なく運用しています。',
+      '契約から数年先までの運用計画も、まとめてご相談ください。'
+    ],
+    /* 長文用サンプルの差し替え。全行の文末表現はそのまま残す。 */
+    custom: ''
+  };
+  var LONG_TARGETS = ['fx-fk','fx-wp','fx-bl','fx-hv','fx-bd','fx-tl','fx-mq','fx-un'];
+  function ltRender(){
+    var lead = LT.custom || LT.lead;
+    var lines = LT.custom ? [LT.custom] : LT.lines;
+    var pgs = [];
+    if (!LT.custom) pgs.push('<p class="lead">' + lead + '</p>');
+    else pgs.push('<p class="lead">' + lead + '</p>');
+    lines.forEach(function(s, i){
+      pgs.push('<p style="--i:' + (i + 1) + '">' + s + '</p>');
+    });
+    LONG_TARGETS.forEach(function(id){
+      var el = document.getElementById(id);
+      if (!el) return;
+      var keepLead = id === 'fx-hv' || id === 'fx-un';
+      var html = keepLead ? pgs.join('') : pgs.filter(function(_, k){ return k > 0; }).join('');
+      if (!LT.custom && id === 'fx-mq'){
+        html = '<p style="--i:0"><span class="lead">' + lead + '</span></p>' +
+          '<p style="--i:1">' + lines[0].replace('8項目','<mark>8項目</mark>').replace('137kWh','<span class="num">137kWh</span>') + '</p>' +
+          '<p style="--i:2">' + lines[1].replace('余剰','<mark>余剰</mark>').replace('無駄なく','<span class="num">無駄なく</span>') + '</p>' +
+          '<p style="--i:3">' + lines[2].replace('数年先','<mark>数年先</mark>') + '</p>';
+      }
+      el.innerHTML = html;
+    });
+    /* 14 キネ字（短い文を単語ごとに） */
+    var kinEl = document.getElementById('fx-kin');
+    if (kinEl){
+      var w = (LT.custom || '構想から運用まで、ひとつの窓口で対応します。').split(/[\u3001。\s]+/).filter(Boolean);
+      kinEl.innerHTML = w.map(function(s, i){
+        var hot = /\d/.test(s) || /^[無蓄余適]/.test(s);
+        return '<span' + (hot ? ' class="hot"' : '') + ' style="--i:' + i + '">' + esc(s) + '。</span>';
+      }).join('');
+    }
+    /* 16 タイピング */
+    var typeEl = document.getElementById('fx-type');
+    if (typeEl){
+      TYPE.s1 = (LT.custom || 'RA-12 蓄電池の運用手順について');
+      TYPE.s2 = (LT.custom || '137kWhの設備は、余剰電力を回収して無駄なく運用します。');
+    }
+    var shp = document.getElementById('fx-shp-body');
+    if (shp) shp.innerHTML = (LT.custom || '契約から数年先までの運用計画も、まとめてご相談ください。');
+    var bx = document.getElementById('fx-box-body');
+    if (bx) bx.innerHTML = '<b>ご注意\u3001</b>' + (LT.custom || '設置には現地調査が必要です。申請の関係で1ヶ月ほどお時間をいただく場合があります。');
+  }
+
+  /* ============================================================
+     11〜15・17〜20 長文エフェクトの再生（CSSトランジション）
+     ============================================================ */
+  function restart(el){ el.classList.remove('go'); void el.offsetWidth; requestAnimationFrame(function(){ el.classList.add('go'); }); }
+  function fkPlay(){ restart($('fx-fk')); }
+  function wpPlay(){ restart($('fx-wp')); }
+  function blPlay(){ restart($('fx-bl')); }
+  function hvPlay(){ restart($('fx-hv')); }
+  function bdPlay(){ restart($('fx-bd')); }
+  function tlPlay(){ restart($('fx-tl')); }
+  function mqPlay(){ restart($('fx-mq')); }
+  function unPlay(){ restart($('fx-un')); }
+  function kinPlay(){ restart($('fx-kin')); }
+  function shpPlay(){ restart($('fx-shp')); }
+  function boxPlay(){ restart($('fx-box')); }
+
+  /* 14 キネ字 -- 16 タイピング */
+  var TYPE = {s1:'RA-12 蓄電池の運用手順について', s2:'137kWhの設備は、余剰電力を回収して無駄なく運用します。', to:null, done:false};
+  function typePlay(){
+    clearTimeout(TYPE.to);
+    var el = $('fx-type');
+    var a = TYPE.s1, b = TYPE.s2;
+    el.innerHTML = '<span class="tl1"></span>\n<span class="ty"></span>';
+    var l1 = el.firstChild, l2 = el.lastChild;
+    var i = 0, j = 0;
+    if (reduced){ l1.textContent = a; l2.textContent = b; return; }
+    (function ta(){
+      i++; l1.textContent = a.slice(0, i);
+      if (i < a.length){ TYPE.to = setTimeout(ta, 45 + Math.random() * 55); }
+      else setTimeout(tb, 260);
+    })();
+    function tb(){
+      j++; l2.textContent = b.slice(0, j);
+      if (j < b.length) TYPE.to = setTimeout(tb, 40 + Math.random() * 60);
+    }
+  }
+
+  /* ============================================================
+     実行・再生管理
+     ============================================================ */
   var $ = function(id){ return document.getElementById(id); };
   var runners = {
     glitch:  function(){ glitchText($('fx-glitch'), state.text); },
@@ -647,6 +1049,19 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
     rise:    function(){ riseText($('fx-rise'), state.text); },
     marker:  function(){ markerPlay($('fx-marker')); },
     vfd:     function(){ vfdText($('fx-vfd'), state.text); },
+    /* --- 長文用エフェクト --- */
+    fk:      function(){ fkPlay(); },
+    wp:      function(){ wpPlay(); },
+    bl:      function(){ blPlay(); },
+    kin:     function(){ kinPlay(); },
+    hv:      function(){ hvPlay(); },
+    type:    function(){ typePlay(); },
+    bd:      function(){ bdPlay(); },
+    tl:      function(){ tlPlay(); },
+    mq:      function(){ mqPlay(); },
+    un:      function(){ unPlay(); },
+    shp:     function(){ shpPlay(); },
+    box:     function(){ boxPlay(); },
     game:    function(){ Game.init(); }
   };
   function play(name){ if (runners[name]) runners[name](); }
@@ -658,6 +1073,7 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
     });
   }
 
+  /* 画面に入ったら1回目を再生／見えていない時はキャンバスを休ませる */
   var cards = document.querySelectorAll('.card');
   if ('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(es){
@@ -697,14 +1113,27 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
     textBtns.forEach(function(x){ x.classList.remove('on'); });
     playAll();
   });
+  /* 長文サンプルを差し替える */
+  $('longInput').addEventListener('change', function(){
+    var v = this.value.replace(/\s+/g, ' ').trim();
+    LT.custom = v;
+    ltRender();
+    if (v) LONG_TARGETS.concat(['fx-kin','fx-type','fx-shp','fx-box']).forEach(function(id){ var el = $(id); if (el && el._seen) play(el.getAttribute('data-fx') || ''); });
+  });
+
+  ltRender();
+
   var rT;
   window.addEventListener('resize', function(){
     clearTimeout(rT);
     rT = setTimeout(function(){ ['fx-glitch','fx-neon','fx-rise'].forEach(function(id){ fitBig($(id), state.text); }); fitBig($('fx-slot'), state.text, 1.04); fitBig($('fx-cube'), state.text, 1.08); ['particle','matrix','vfd'].forEach(function(n){ if (document.querySelector('[data-fx="' + n + '"]')._seen) play(n); }); Game.fitFx(); }, 250);
   });
 
+  /* ============================================================
+     ミニゲーム「ぴったりストップ」
+     ============================================================ */
   var Game = (function(){
-    var SPEEDS = [9, 13, 18, 24, 31];
+    var SPEEDS = [9, 13, 18, 24, 31];          /* 1秒あたりに進む数 */
     var ROUNDS = SPEEDS.length;
     var g = {round:0, score:0, target:0, running:false, raf:0, v:0, t0:0, start:0, phase:'ready'};
     var best = 0;
@@ -801,6 +1230,7 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
       else if (g.phase === 'run') stop();
       else if (g.phase === 'end') init();
     }
+    /* 成功時のパーティクル */
     function fitFx(){
       var dpr = Math.min(window.devicePixelRatio || 1, 2), st = fx.parentNode;
       fx.width = st.clientWidth * dpr; fx.height = st.clientHeight * dpr;
@@ -839,7 +1269,7 @@ footer{border-top:1px solid var(--line);padding:32px 0 48px;font-size:12px;color
     $('g-reset').addEventListener('click', init);
     return {init:init, fitFx:fitFx, press:press, _g:g};
   })();
-  window.__game = Game;
+  window.__game = Game;   /* 動作確認用 */
 })();
 </script>
 </body>
