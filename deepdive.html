@@ -34,10 +34,14 @@ header p{margin-top:12px;color:var(--sub);font-size:13.5px}
 h2{font-size:15.5px}
 h2 small{font-size:9.5px;color:var(--sub);letter-spacing:.16em;margin-left:6px}
 .card p{color:var(--sub);font-size:12.5px;line-height:1.75;margin-top:6px}
-.foot{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:8px}
+.foot{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:8px;flex-wrap:wrap}
 code{font-size:11.5px;color:#8fd0ff;background:rgba(143,208,255,.08);padding:3px 8px;border-radius:6px}
 .replay{font-size:11.5px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--ink);cursor:pointer;white-space:nowrap}
 .replay:hover{border-color:rgba(232,134,47,.7);color:#ffcb8e}
+.copy{font-size:11.5px;padding:5px 11px;border-radius:999px;border:1px solid rgba(232,134,47,.45);background:rgba(232,134,47,.15);color:#ffcb8e;cursor:pointer;white-space:nowrap}
+.copy:hover{background:rgba(232,134,47,.3)}
+.copy.ok{border-color:rgba(130,230,160,.65);color:#a8f0bf;background:rgba(130,230,160,.14)}
+.btns{display:flex;gap:6px;flex-wrap:wrap}
 footer{text-align:center;margin-top:48px;color:#52708d;font-size:12px}
 footer a{color:#8fd0ff;text-decoration:none}
 .ch{display:inline-block}
@@ -54,7 +58,7 @@ footer a{color:#8fd0ff;text-decoration:none}
 <div class="wrap">
   <header>
     <h1>文字と数字のエフェクト 演出編 vol.4<small>DEEP DIVE 08 + VARIATIONS</small></h1>
-    <p>8つの演出に、始まり・終わりの形と、長さ（速さ）の調整をつけました。</p>
+    <p>8つの演出に、始まり・終わりの形と、長さ（速さ）の調整をつけました。コードをコピーしてそのまま使えます。</p>
   </header>
   <div class="panel">
     <input type="text" id="src" value="REALIZE 137kWh" aria-label="表示する文章">
@@ -63,7 +67,7 @@ footer a{color:#8fd0ff;text-decoration:none}
   </div>
   <div class="ctrl">
     <label>速さ <input type="range" id="speed" min="0.5" max="2" step="0.1" value="1"><span class="val" id="speedVal">1.0×</span></label>
-    <label>始り
+    <label>始まり
       <select id="start">
         <option value="fade">フェード</option>
         <option value="up">下から</option>
@@ -285,6 +289,56 @@ footer a{color:#8fd0ff;text-decoration:none}
 
   function playAll(){ CARDS.forEach(function(c){ playOne(c.id); }); }
 
+  function makeSnippet(id){
+    var card=null;
+    for(var i=0;i<CARDS.length;i++){ if(CARDS[i].id===id){ card=CARDS[i]; break; } }
+    if(!card) return '';
+    var dur=Math.round(card.dur/cfg.speed);
+    var css='body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#04101c;padding:0 24px}'
+      +'.stage{height:118px;display:flex;align-items:center;justify-content:center}'
+      +'.big{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",Arial,sans-serif;font-size:clamp(19px,3.6vw,32px);font-weight:800;letter-spacing:.03em;white-space:nowrap;color:#ecf3fb}'
+      +'.ch{display:inline-block}';
+    var js=[
+      '(function(){',
+      'var state={text:'+JSON.stringify(state.text)+'};',
+      'var LAT='+JSON.stringify(LAT)+';',
+      'var KANA='+JSON.stringify(KANA)+';',
+      'var DIG='+JSON.stringify(DIG)+';',
+      setFor.toString(),
+      rnd.toString(),
+      chars.toString(),
+      esc.toString(),
+      nb.toString(),
+      build.toString(),
+      runners[id].toString(),
+      id+'(document.getElementById("fx"),'+dur+');',
+      '})();'
+    ].join('\n');
+    return '<!DOCTYPE html>\n<html lang="ja">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width,initial-scale=1">\n<title>'+card.name+'</title>\n<style>\n'+css+'\n</style>\n</head>\n<body>\n<div class="stage"><span class="big" id="fx"></span></div>\n<script>\n'+js+'\n<\/script>\n</body>\n</html>';
+  }
+
+  function copyFallback(text,done){
+    var ta=document.createElement('textarea');
+    ta.value=text; ta.style.position='fixed'; ta.style.top='-1000px';
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy'); }catch(e){}
+    ta.remove(); if(done) done();
+  }
+
+  function copyCode(id,btn){
+    var text=makeSnippet(id);
+    function done(){
+      if(!btn) return;
+      if(btn.__t===undefined) btn.__t=btn.textContent;
+      btn.textContent='コピーした ✓'; btn.classList.add('ok');
+      clearTimeout(btn.__k);
+      btn.__k=setTimeout(function(){ btn.textContent=btn.__t; btn.classList.remove('ok'); },1400);
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done,function(){ copyFallback(text,done); });
+    } else { copyFallback(text,done); }
+  }
+
   function render(){
     var grid=document.getElementById('grid');
     grid.innerHTML='';
@@ -294,11 +348,14 @@ footer a{color:#8fd0ff;text-decoration:none}
       art.innerHTML='<div class="stage"><span class="big" id="fx-'+c.id+'"></span></div>'+
         '<div class="head"><span class="no">'+c.no+'</span><h2>'+c.name+'<small>'+c.en+'</small></h2></div>'+
         '<p>'+c.desc+'</p>'+
-        '<div class="foot"><code>'+c.dur+'ms</code><button class="replay" data-fx="'+c.id+'">もう一回 ↻</button></div>';
+        '<div class="foot"><code>'+c.dur+'ms</code><span class="btns"><button class="replay" data-fx="'+c.id+'">もう一回 ↻</button><button class="copy" data-fx="'+c.id+'">コードをコピー</button></span></div>';
       grid.appendChild(art);
     });
     grid.querySelectorAll('.replay').forEach(function(b){
       b.addEventListener('click',function(){ playOne(b.getAttribute('data-fx')); });
+    });
+    grid.querySelectorAll('.copy').forEach(function(b){
+      b.addEventListener('click',function(){ copyCode(b.getAttribute('data-fx'),b); });
     });
   }
 
