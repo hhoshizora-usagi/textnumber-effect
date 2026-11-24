@@ -78,6 +78,10 @@ button{font:inherit;color:inherit}
 .foot code{font-family:var(--mono);font-size:12px;color:var(--muted)}
 .replay{border:1px solid rgba(255,255,255,.22);background:transparent;padding:6px 14px;font-size:12px;cursor:pointer;color:var(--ink-soft);white-space:nowrap;transition:border-color .2s,color .2s}
 .replay:hover{border-color:var(--accent);color:var(--accent)}
+.foot .btns{display:flex;gap:8px;flex-wrap:wrap}
+.copy{border:1px solid color-mix(in srgb,var(--accent) 55%,transparent);background:color-mix(in srgb,var(--accent) 14%,transparent);padding:6px 14px;font-size:12px;cursor:pointer;color:var(--accent);white-space:nowrap;transition:background .2s,color .2s,border-color .2s}
+.copy:hover{background:color-mix(in srgb,var(--accent) 28%,transparent)}
+.copy.ok{border-color:rgba(130,230,160,.7);color:#a8f0bf;background:rgba(130,230,160,.16)}
 
 /* ===== 23 ライブカウンター ===== */
 .live{display:flex;flex-direction:column;align-items:center;gap:10px}
@@ -248,7 +252,7 @@ footer a{color:var(--ink-soft)}
           <div class="head"><span class="no">23</span><h3>ライブカウンター<small>LIVE COUNTER</small></h3></div>
           <p>数字が<span class="hl">リアルタイムで増え続けます</span>。変わった桁だけがスッと回り、3桁ごとのカンマも自動で入ります。</p>
           <p class="use"><b>使いどころ</b>累計発電量・来場者数・支援金額</p>
-          <div class="foot"><code>liveCounter()</code><button class="replay">もう一回 ↻</button></div>
+          <div class="foot"><code>liveCounter()</code><span class="btns"><button class="replay">もう一回 ↻</button></span></div>
         </div>
       </article>
 
@@ -258,7 +262,7 @@ footer a{color:var(--ink-soft)}
           <div class="head"><span class="no">24</span><h3>リングゲージ<small>RING COUNTER</small></h3></div>
           <p>円のゲージが伸びるのと<span class="hl">同じ速さで中の数字も数えます</span>。数字に100以下を入れるとその%、それ以上は68%で表示します。</p>
           <p class="use"><b>使いどころ</b>達成率・削減率・満足度</p>
-          <div class="foot"><code>ringCounter()</code><button class="replay">もう一回 ↻</button></div>
+          <div class="foot"><code>ringCounter()</code><span class="btns"><button class="replay">もう一回 ↻</button></span></div>
         </div>
       </article>
 
@@ -268,7 +272,7 @@ footer a{color:var(--ink-soft)}
           <div class="head"><span class="no">25</span><h3>モーフ数字<small>MORPH DIGITS</small></h3></div>
           <p>1本の光る線が<span class="hl">ぐにゃっと形を変えて</span>次の数字になります。数えるたびに線がなめらかに変形します。</p>
           <p class="use"><b>使いどころ</b>カウントダウン、ネオン調の数値</p>
-          <div class="foot"><code>morphCount()</code><button class="replay">もう一回 ↻</button></div>
+          <div class="foot"><code>morphCount()</code><span class="btns"><button class="replay">もう一回 ↻</button></span></div>
         </div>
       </article>
 
@@ -278,7 +282,7 @@ footer a{color:var(--ink-soft)}
           <div class="head"><span class="no">26</span><h3>3Dドラム<small>3D ROULETTE</small></h3></div>
           <p>数字が<span class="hl">円柱（ドラム）の面</span>に並んでいて、くるくる回って左から順に止まります。上下が奥へ丸まって見える立体版です。</p>
           <p class="use"><b>使いどころ</b>抽選・当選番号、ルーレット</p>
-          <div class="foot"><code>drumRoll()</code><button class="replay">もう一回 ↻</button></div>
+          <div class="foot"><code>drumRoll()</code><span class="btns"><button class="replay">もう一回 ↻</button></span></div>
         </div>
       </article>
 
@@ -293,7 +297,7 @@ footer a{color:var(--ink-soft)}
           <div class="head"><span class="no">27</span><h3>ビフォー → アフター<small>BEFORE / AFTER</small></h3></div>
           <p>前の数字に<span class="hl">取り消し線</span>が引かれ、矢印が伸びて、新しい数字が減っていきます。最後に「-30%」のバッジがポンと出ます。比べる数字をいちばん伝わりやすく見せる型です。</p>
           <p class="use"><b>使いどころ</b>電気代の削減・料金の比較・導入効果</p>
-          <div class="foot"><code>beforeAfter()</code><button class="replay">もう一回 ↻</button></div>
+          <div class="foot"><code>beforeAfter()</code><span class="btns"><button class="replay">もう一回 ↻</button></span></div>
         </div>
       </article>
 
@@ -312,7 +316,7 @@ footer a{color:var(--ink-soft)}
           <div class="head"><span class="no">28</span><h3>リキッド充填<small>LIQUID FILL</small></h3></div>
           <p>文字の中に<span class="hl">水がゆらゆら波打ちながら</span>たまっていきます。水位を数字の%にすれば、ゲージとしても使えます。</p>
           <p class="use"><b>使いどころ</b>充電量・目標達成率、やわらかい見出し</p>
-          <div class="foot"><code>liquidFill()</code><button class="replay">もう一回 ↻</button></div>
+          <div class="foot"><code>liquidFill()</code><span class="btns"><button class="replay">もう一回 ↻</button></span></div>
         </div>
       </article>
 
@@ -322,7 +326,7 @@ footer a{color:var(--ink-soft)}
           <div class="head"><span class="no">29</span><h3>水面の波紋<small>RIPPLE</small></h3></div>
           <p>水面に映った文字のように、<span class="hl">波紋が広がって文字がゆらぎ</span>、だんだん静かに戻ります。触った場所から波が出ます。</p>
           <p class="use"><b>使いどころ</b>水・自然・涼しさがテーマのページ</p>
-          <div class="foot"><code>rippleText()</code><button class="replay">もう一回 ↻</button></div>
+          <div class="foot"><code>rippleText()</code><span class="btns"><button class="replay">もう一回 ↻</button></span></div>
         </div>
       </article>
 
@@ -332,7 +336,7 @@ footer a{color:var(--ink-soft)}
           <div class="head"><span class="no">30</span><h3>インクにじみ<small>INK BLEED</small></h3></div>
           <p>和紙に墨を落としたように、<span class="hl">ぼわっとにじんでから文字の形に締まります</span>。ふちにかすれが残ります。</p>
           <p class="use"><b>使いどころ</b>和風・筆文字風の見出し、お知らせの日付</p>
-          <div class="foot"><code>inkBleed()</code><button class="replay">もう一回 ↻</button></div>
+          <div class="foot"><code>inkBleed()</code><span class="btns"><button class="replay">もう一回 ↻</button></span></div>
         </div>
       </article>
 
@@ -342,7 +346,7 @@ footer a{color:var(--ink-soft)}
           <div class="head"><span class="no">31</span><h3>3D押し出し<small>EXTRUDE</small></h3></div>
           <p>文字に<span class="hl">厚み</span>がついた立体文字。マウスや指の位置に合わせて傾き、側面の向きも変わります。</p>
           <p class="use"><b>使いどころ</b>ポップなタイトル、イベントのロゴ</p>
-          <div class="foot"><code>extrudeText()</code><button class="replay">もう一回 ↻</button></div>
+          <div class="foot"><code>extrudeText()</code><span class="btns"><button class="replay">もう一回 ↻</button></span></div>
         </div>
       </article>
 
@@ -352,7 +356,7 @@ footer a{color:var(--ink-soft)}
           <div class="head"><span class="no">32</span><h3>ゴム伸び<small>JELLY</small></h3></div>
           <p>文字が<span class="hl">ゴムやゼリーのように伸び縮み</span>しながら登場します。触った文字だけ、もう一度ぷるんと揺れます。数字はアクセント色になります。</p>
           <p class="use"><b>使いどころ</b>子ども向け・ゲーム・キャンペーンの見出し</p>
-          <div class="foot"><code>jellyText()</code><button class="replay">もう一回 ↻</button></div>
+          <div class="foot"><code>jellyText()</code><span class="btns"><button class="replay">もう一回 ↻</button></span></div>
         </div>
       </article>
 
@@ -576,7 +580,7 @@ footer a{color:var(--ink-soft)}
     cancelAnimationFrame(liq.raf);
     var host = $('fx-liquid');
     var text = state.text + ' ' + state.num;
-    var NS = 'http://www.w3.org/2000/svg', id = 'lq' + Date.now();
+    var id = 'lq' + Date.now();
     host.innerHTML = '<svg aria-label="' + esc(text) + '"><defs><clipPath id="' + id + '"><text x="0" y="0" font-size="100" font-weight="900" font-family=\'Arial,"Noto Sans JP",sans-serif\'></text></clipPath></defs><g clip-path="url(#' + id + ')"><rect class="base" fill="rgba(255,255,255,.04)"/><path class="w2"/><path class="w1"/></g><text class="outline" x="0" y="0" font-size="100" font-weight="900" font-family=\'Arial,"Noto Sans JP",sans-serif\'></text></svg><div class="pct">LEVEL <b id="lq-p">0</b>%</div>';
     var svg = host.firstChild, tClip = svg.querySelector('clipPath text'), tOut = svg.querySelector('.outline');
     tClip.textContent = text; tOut.textContent = text;
@@ -652,7 +656,7 @@ footer a{color:var(--ink-soft)}
   /* ============================================================
      31 3D押し出し（text-shadowを重ねて厚みを作る）
      ============================================================ */
-  var ext = {rx:8, ry:-14, tx:8, ty:-14, raf:0, auto:0};
+  var ext = {rx:8, ry:-14, tx:8, ty:-14, raf:0, auto:0, t0:0};
   function shadowFor(rx, ry){
     var a = getComputedStyle(root).getPropertyValue('--accent').trim() || '#d97721';
     var dx = Math.max(-1, Math.min(1, ry / 20)), dy = Math.max(-1, Math.min(1, -rx / 20));
@@ -732,8 +736,8 @@ footer a{color:var(--ink-soft)}
     return btns;
   }
   var tb = group('text', function(v){ state.text = v; $('textInput').value = ''; playAll(); });
-  var nb = group('num', function(v){ state.num = v; $('numInput').value = ''; playAll(); });
-  group('accent', function(v){ root.setAttribute('data-accent', v); });
+  var nbg = group('num', function(v){ state.num = v; $('numInput').value = ''; playAll(); });
+  group('accent', function(v){ root.setAttribute('data-accent', v); playAll(); });
   $('textInput').addEventListener('change', function(){
     var v = this.value.replace(/\s+/g, ' ').trim(); if (!v) return;
     state.text = chars(v).slice(0, 12).join(''); tb.forEach(function(x){ x.classList.remove('on'); }); playAll();
@@ -741,8 +745,71 @@ footer a{color:var(--ink-soft)}
   $('numInput').addEventListener('change', function(){
     var v = this.value.replace(/[０-９]/g, function(c){ return String.fromCharCode(c.charCodeAt(0) - 0xFEE0); }).replace(/[^0-9]/g, '').slice(0, 6);
     if (!v){ this.value = ''; return; }
-    state.num = String(parseInt(v, 10)); this.value = state.num; nb.forEach(function(x){ x.classList.remove('on'); }); playAll();
+    state.num = String(parseInt(v, 10)); this.value = state.num; nbg.forEach(function(x){ x.classList.remove('on'); }); playAll();
   });
+
+  /* ============================================================
+     コードのコピー（そのエフェクトだけが動く単体HTMLを作る）
+     ============================================================ */
+  var ALL_FNS = [chars, esc, ease, tween, numVal, resample, pathOf, rollRender, fmtLive, shadowFor, wob,
+                 liveCounter, ringCounter, morphCount, drumRoll, beforeAfter,
+                 liquidFill, rippleText, inkBleed, extrudeText, jellyText];
+  function makeSnippet(fx){
+    var card = document.querySelector('.card[data-fx="' + fx + '"]');
+    if (!card) return '';
+    var stage = card.querySelector('.stage').outerHTML;
+    var css = document.querySelector('style').textContent;
+    var filters = document.querySelector('svg[aria-hidden="true"]');
+    var accent = root.getAttribute('data-accent') || 'orange';
+    var title = (card.querySelector('h3') ? card.querySelector('h3').childNodes[0].textContent.trim() : fx);
+    var js = [
+      '(function(){',
+      'var root=document.documentElement;',
+      'var reduced=false;',
+      'var state=' + JSON.stringify(state) + ';',
+      'var $=function(id){return document.getElementById(id);};',
+      ALL_FNS.map(function(f){ return f.toString(); }).join('\n'),
+      'var GLYPH=' + JSON.stringify(GLYPH) + ';',
+      'var NPTS=' + NPTS + ';',
+      'var RS={}; for (var g in GLYPH) RS[g]=resample(GLYPH[g]);',
+      'var liveTimer=null, liveVal=0, baTimers=[], morphRun={stop:true}, liq={raf:0}, rip={raf:0}, ext={rx:8,ry:-14,tx:8,ty:-14,raf:0,auto:0,t0:0};',
+      'if($("fx-ripple-stage")){ $("fx-ripple-stage").addEventListener("pointerdown",function(e){var r=this.getBoundingClientRect();rippleText(e.clientX-r.left,e.clientY-r.top);}); }',
+      'if($("fx-ext-stage")){ $("fx-ext-stage").addEventListener("pointermove",function(e){var r=this.getBoundingClientRect();ext.auto=0;ext.ty=((e.clientX-r.left)/r.width-0.5)*50;ext.tx=-((e.clientY-r.top)/r.height-0.5)*30; }); $("fx-ext-stage").addEventListener("pointerleave",function(){ext.auto=1;ext.t0=performance.now();}); }',
+      'if($("fx-jelly")){ $("fx-jelly").addEventListener("pointerover",wob); $("fx-jelly").addEventListener("pointerdown",wob); }',
+      '(' + runners[fx].toString() + ')();',
+      '})();'
+    ].join('\n');
+    return '<!DOCTYPE html>\n<html lang="ja" data-accent="' + accent + '">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width,initial-scale=1">\n<title>' + title + '</title>\n<style>\n' + css + '\n</style>\n</head>\n<body>\n' + (filters ? filters.outerHTML : '') + '\n' + stage + '\n<script>\n' + js + '\n<\/script>\n</body>\n</html>';
+  }
+  function copyFallback(text, done){
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.top = '-1000px';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch(e){}
+    ta.remove(); if (done) done();
+  }
+  function copyCode(fx, btn){
+    var text = makeSnippet(fx);
+    function done(){
+      if (btn.__t === undefined) btn.__t = btn.textContent;
+      btn.textContent = 'コピーした ✓'; btn.classList.add('ok');
+      clearTimeout(btn.__k);
+      btn.__k = setTimeout(function(){ btn.textContent = btn.__t; btn.classList.remove('ok'); }, 1400);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done, function(){ copyFallback(text, done); });
+    } else { copyFallback(text, done); }
+  }
+  cards.forEach(function(c){
+    var btns = c.querySelector('.foot .btns');
+    if (!btns) return;
+    var fx = c.getAttribute('data-fx');
+    var b = document.createElement('button');
+    b.className = 'copy'; b.type = 'button'; b.textContent = 'コードをコピー';
+    b.addEventListener('click', function(e){ e.stopPropagation(); c._seen = true; copyCode(fx, b); });
+    btns.appendChild(b);
+  });
+
   window.__deep = {state:state, play:play};
 })();
 </script>
